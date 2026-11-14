@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bảng chỉnh định rơ-le · HPDQ</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="jszip.min.js"></script>
+<script defer src="excel.js"></script>
+<script defer src="app.js"></script>
+</head>
+<body>
+<header class="top"><div class="brand"><img src="../Logo.png" alt="" style="height: 100px;width: 200px;"><div><st><strong><st><st><st><st style="font-family: 'Times New Roman', Times, serif; font-weight: bold; font-size: medium;">HÒA PHÁT DUNG QUẤT</st></st></st></st></strong></st><small style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">Hệ thống điện</small></div></div><button id="theme" type="button">◐ Chế độ tối</button></header>
+<div class="shell">
+<aside><h2>Danh mục các trạm điện KLH HPDQ</h2><nav id="tree" aria-label="Danh mục trạm"></nav></aside>
+<main>
+<div id="path" class="path"></div>
+<h1 id="title" style="font-family: Arial, Helvetica, sans-serif;">Bảng chỉnh định relay</h1>
+<p id="source"></p>
+<div id="notice" role="status" hidden></div>
+<section id="viewer" aria-label="Dữ liệu chỉnh định" hidden>
+<div class="toolbar"><label class="search"><span aria-hidden="true">⌕</span><input type="search" id="search" placeholder="Tìm theo tên hoặc mã tủ" aria-label="Tìm theo tên hoặc mã tủ"></label><button id="export-group">Xuất Excel nhà máy</button><button id="export-station" class="primary">↓ Xuất Excel trạm</button></div>
+<div class="tablehead"><strong>Thông số chỉnh định</strong><span id="count" aria-live="polite"></span></div>
+<div class="table-scroll" tabindex="0" aria-label="Bảng có thể cuộn ngang"><table id="table"></table><p id="empty" hidden>Không tìm thấy tủ phù hợp.</p></div>
+</section>
+</main>
+</div>
+</body></html>
