@@ -1,0 +1,314 @@
+body {
+    margin: 0;
+    padding: 0;
+
+    /* Đặt hình nền */
+    background-image: url("./3-tbny-dat-viet-vac-17935390761361362152213-1794727599531576436966.png");
+
+    /* Hình nền phủ toàn bộ màn hình */
+    background-size: cover;
+
+    /* Căn giữa hình nền */
+    background-position: center;
+
+    /* Không lặp lại hình nền */
+    background-repeat: no-repeat;
+
+    /* Cố định hình nền khi cuộn trang */
+    background-attachment: fixed;
+
+    /* Chiều cao tối thiểu bằng màn hình */
+    min-height: 100vh;
+}
+.trang-chu {
+    color: rgb(4, 55, 157);
+    text-align: center;
+    animation: slideIn 0.9s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(45px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Khu vực chứa 4 thẻ */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+
+    width: 90%;
+    max-width: 1300px;
+    margin: 180px auto 0;
+}
+
+/* Thiết kế từng thẻ */
+.card {
+    background: rgba(5, 35, 70, 0.78);
+    backdrop-filter: blur(8px);
+
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 16px;
+
+    padding: 35px 15px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Biểu tượng */
+.card-icon {
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+/* Tiêu đề thẻ */
+.card h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+/* Mô tả */
+.card p {
+    font-size: 14px;
+    color: #d5e8f5;
+}
+
+/* Hiệu ứng khi đưa chuột vào */
+.card:hover {
+    transform: translateY(-12px);
+    background: rgba(0, 80, 150, 0.9);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.4),
+        0 0 20px rgba(0,170,255,0.4);
+
+    border-color: #00bfff;
+}
+
+/* Hiển thị trên tablet */
+.card-container {
+    display: grid;
+
+    /* 2 thẻ trên, 2 thẻ dưới */
+    grid-template-columns: repeat(2, 1fr);
+
+    /* Khoảng cách giữa các thẻ */
+    gap: 25px;
+
+    /* Chiều rộng khu vực chứa thẻ */
+    width: 80%;
+    max-width: 850px;
+
+    /* Căn giữa và cách phía trên 150px */
+    margin: 150px auto 0;
+}
+
+/* Hiển thị trên điện thoại */
+@media (max-width: 600px) {
+    .card-container {
+        grid-template-columns: 1fr;
+        width: 90%;
+        margin-top: 50px;
+    }
+}
+/* Hiệu ứng trượt từ bên trái */
+@keyframes slideFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-250px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Hiệu ứng trượt từ bên phải */
+@keyframes slideFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(250px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Thẻ 1: Relay hệ thống điện */
+.card:nth-child(1) {
+    animation: slideFromLeft 1s ease-out both;
+}
+
+/* Thẻ 2: Thiết bị điện */
+.card:nth-child(2) {
+    animation: slideFromRight 1s ease-out 0.2s both;
+}
+
+/* Thẻ 3: Cân bằng công suất */
+.card:nth-child(3) {
+    animation: slideFromLeft 1s ease-out 0.4s both;
+}
+
+/* Thẻ 4: Điều tiết năng lượng */
+.card:nth-child(4) {
+    animation: slideFromRight 1s ease-out 0.6s both;
+}
+
+/* Giữ hiệu ứng khi rê chuột */
+.card:hover {
+    transform: translateY(-12px);
+    background: rgba(0, 80, 150, 0.9);
+    box-shadow: 0 15px 35px rgba(0,170,255,0.4);
+    border-color: #00bfff;
+}
+
+/* Cho phép tạo hiệu ứng ánh sáng trong Card */
+.card {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* Tạo dải ánh sáng chéo */
+.card::before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 60%;
+    height: 100%;
+
+    background: linear-gradient(
+        110deg,
+        transparent 0%,
+        rgba(255,255,255,0.05) 25%,
+        rgba(255,255,255,0.45) 50%,
+        rgba(255,255,255,0.05) 75%,
+        transparent 100%
+    );
+
+    transform: skewX(-25deg);
+    pointer-events: none;
+    z-index: 0;
+
+    /* Quét một lần mỗi 5 giây */
+    animation: shineCard 5s linear infinite;
+}
+
+/* Giữ nội dung nằm trên ánh sáng */
+.card > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Hiệu ứng quét từ trái sang phải */
+@keyframes shineCard {
+    0% {
+        left: -100%;
+    }
+
+    20% {
+        left: 150%;
+    }
+
+    100% {
+        left: 150%;
+    }
+}
+/* Mỗi dòng danh mục con có một khung riêng */
+.menu-card.menu-card--item {
+  margin-block: 6px;
+  padding: 8px 10px;
+  min-height: 38px;
+  border: 1px solid #35465e;
+  border-radius: 8px;
+  background-color: #172235;
+}
+
+.menu-card.menu-card--item:hover {
+  border-color: #6585ac;
+  background-color: #1c2c43;
+}
+
+/* Làm nổi bật dòng đang chọn */
+.menu-card.menu-card--item.active,
+.menu-card.menu-card--item[aria-current="true"],
+.menu-card.menu-card--item[aria-current="page"] {
+  border-color: #60a5fa;
+  background-color: #203b5e;
+}
+.menu-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 38px;
+  box-sizing: border-box;
+  margin-block: 4px;
+  padding: 7px 10px;
+  border: 1px solid #26364d;
+  border-radius: 8px;
+  background: #172234;
+  color: #e0eaf7;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.menu-card.menu-card--group {
+  min-height: 42px;
+  margin-top: 10px;
+  background: #1a3050;
+  border-color: #2b4a73;
+  color: #b9daff;
+  font-weight: 700;
+}
+
+.menu-card.menu-card--item {
+  font-size: 13px;
+}
+
+.menu-card .menu-card__count {
+  flex-shrink: 0;
+  margin-inline-start: auto;
+  padding: 2px 7px;
+  border: 1px solid #314561;
+  border-radius: 999px;
+  background: #101b2c;
+  color: #a7c1e1;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.menu-card:hover {
+  background: #213450;
+  border-color: #4d719e;
+}
+
+.menu-card:focus-visible {
+  outline: 2px solid #6ab5ff;
+  outline-offset: 2px;
+}
+
+.menu-card.active,
+.menu-card[aria-current="true"],
+.menu-card[aria-current="page"] {
+  background: #203b5e;
+  border-color: #5299e5;
+  box-shadow: inset 3px 0 #6ab5ff;
+  color: #eaf4ff;
+}
